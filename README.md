@@ -1,15 +1,7 @@
-# 🚀 Welcome to your new awesome project!
+# weather app
 
-This project has been created using **webpack-cli**, you can now run
+learning project fetching data from openWeatherMap.
 
-```
-npm run build
-```
+### Screenshot
 
-or
-
-```
-yarn build
-```
-
-to bundle your application
+![screenshot](2022-11-01_20-17-04_screenshot.png)

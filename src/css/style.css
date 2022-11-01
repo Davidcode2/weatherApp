@@ -1,0 +1,36 @@
+@font-face {
+	font-family: 'PlayfairDisplay';
+	src: url('./PlayfairDisplay-Medium.ttf');
+}
+
+* {
+  font-family: 'PlayfairDisplay';
+}
+
+html {
+	background-image: url('./wp-mountain-clouds.jpg');
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+
+.hero {
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-weight: normal;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form input {
+  padding: 10px 100px 10px 4px;
+}
+

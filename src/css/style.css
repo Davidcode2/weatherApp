@@ -7,7 +7,7 @@
   --main-button-color: grey;
   --main-button-background-color: rgba(205, 205, 205, 0.1);
   --main-background-color: rgba(205, 205, 205, 0.1);
-  --secondary-background-color: #ffffe6;
+  --secondary-background-color: #0a0c0c;
   --main-shadow: rgba(10,10,10,0.1);
   --main-text-color: black;
 }
@@ -52,9 +52,13 @@ form {
 
 form input {
   padding: 10px 100px 10px 15px;
+  margin-bottom: 15px;
   border-radius: 25px;
   background-color: var(--secondary-background-color);
   border: none;
+  color: white;
+  transform: scale(1);
+  transition: transform 0.1s;
 }
 
 form input:focus {
@@ -62,6 +66,8 @@ form input:focus {
   outline: none;
   background-color: var(--main-text-color);
   color: white;
+  transform: scale(1.1);
+  transition: transform 0.2s;
 }
 form input:active {
   border: none;
@@ -69,6 +75,11 @@ form input:active {
 
 .wrapper {
   display: grid;
+  font-size: 1.4rem;
+}
+
+.largeText {
+  font-size: 3rem;
 }
 
 .card {
@@ -80,6 +91,21 @@ form input:active {
   background-color: var(--main-background-color);
   padding: 10px;
   margin: 10px 0 15px 0;
+}
+
+.card-small {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 10px;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+  padding: 10px;
+}
+
+.card-small-sans {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
 }
 
 .cardShadow {

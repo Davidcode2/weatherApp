@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<script src="https://kit.fontawesome.com/3650022220.js" crossorigin="anonymous"></script>
 
 <head>
   <meta charset="utf-8" />
@@ -11,28 +12,24 @@
     <h1>Das Wetter</h1>
   </div>
   <form>
-    <input type="text" id="location" name="location">
+    <input type="text" id="location" name="location" />
   </form>
-  <div class="wrapper">
-    <div class="card cardShadow">
-      <div class="temperature"></div>
-    <div class="card cardShadow">
-      <div class="sun"></div>
-    </div>
-    </div>
-  </div>
+  <div class="wrapper"></div>
 </body>
 
 <script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
       navigator.serviceWorker
-        .register("service-worker.js")
+        .register('service-worker.js')
         .then((registration) => {
-          console.log("Service Worker registered: ", registration);
+          console.log('Service Worker registered: ', registration);
         })
         .catch((registrationError) => {
-          console.error("Service Worker registration failed: ", registrationError);
+          console.error(
+            'Service Worker registration failed: ',
+            registrationError
+          );
         });
     });
   }

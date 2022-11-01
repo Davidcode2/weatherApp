@@ -14,19 +14,19 @@ export class WeatherService {
   
   private sunData: any;
   
-  private units: string;
+  public units: string = "metric";
 
   private generalInfo: any;
 
   private timezone: number;
 
   async callApi() {
-    const weatherData = await this.getWeatherIn(this.location.value, this.units="metric");
+    const weatherData = await this.getWeatherIn(this.location.value, this.units);
     this.extractData(weatherData);
     return weatherData;
   }
 
-  getWeatherIn(location: string, units: string) {
+  getWeatherIn(location: string, units?: string) {
     return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location}&limit=3&appid=0c11016b48bd38806a52db2ea72606ce&units=${units}`
     ).then((res) => {
       return res.json();

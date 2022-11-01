@@ -1,3 +1,9 @@
+type Temperature = {
+  temperature: number;
+  high: number;
+  low: number;
+  feel: number;
+}
 import { WeatherService } from '../services/weatherService';
 
 export class WeatherComponent {
@@ -18,8 +24,47 @@ export class WeatherComponent {
 
   drawData(weatherData: any) {
     console.log("from component: ", weatherData);
-    const temperatureContainer = document.querySelector(".temperature");
-    temperatureContainer.textContent = this.weatherService.getTemperature().temperature.toString();
+    this.drawGeneralInfo();
+    this.drawTemperature();
+    this.drawSun();
   }
 
+  drawGeneralInfo() {
+    const generalContainer = document.querySelector(".temperature");
+    const generalData = this.weatherService.getGeneralInfo();
+    const unorderedList = document.createElement("ul");
+    for (const key of Object.keys(generalData)) {
+      const listElement = document.createElement("li");
+      console.log(generalData[key].toString());
+      listElement.textContent = generalData[key].toString();
+      unorderedList.appendChild(listElement);
+    }
+    generalContainer.appendChild(unorderedList);
+  }
+
+  drawTemperature() {
+    const temperatureContainer = document.querySelector(".temperature");
+    const temperatureData = this.weatherService.getTemperature();
+    const unorderedList = document.createElement("ul");
+    for (const key of Object.keys(temperatureData)) {
+      const listElement = document.createElement("li");
+      console.log(temperatureData[key as keyof Temperature].toString());
+      listElement.textContent = temperatureData[key as keyof Temperature].toString();
+      unorderedList.appendChild(listElement);
+    }
+    temperatureContainer.appendChild(unorderedList);
+  }
+
+  drawSun() {
+    const sunContainer = document.querySelector(".sun");
+    const sunData = this.weatherService.getSunData();
+    const timezone = this.weatherService.getTimezone();
+    const unorderedList = document.createElement("ul");
+    for (const key of Object.keys(sunData)) {
+      const listElement = document.createElement("li");
+      listElement.textContent = new Date((sunData[key] + timezone) * 1000).toLocaleTimeString();
+      unorderedList.appendChild(listElement);
+    }
+    sunContainer.appendChild(unorderedList);
+  }
 }

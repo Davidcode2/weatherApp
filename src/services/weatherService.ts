@@ -1,9 +1,10 @@
 type Temperature = {
-  temperature: number,
-  high: number,
-  low: number,
-  feel: number
+  temperature: number;
+  high: number;
+  low: number;
+  feel: number;
 }
+
 export class WeatherService {
   private location: HTMLInputElement = document.querySelector("#location");
 
@@ -11,7 +12,13 @@ export class WeatherService {
 
   private temperature: Temperature;
   
+  private sunData: any;
+  
   private units: string;
+
+  private generalInfo: any;
+
+  private timezone: number;
 
   async callApi() {
     const weatherData = await this.getWeatherIn(this.location.value, this.units="metric");
@@ -32,9 +39,17 @@ export class WeatherService {
     console.log(weatherObj);
     this.weatherData = weatherObj;
     const temperatureData = this.setTemperature(weatherObj);
+    const generalInfo = this.setGeneralInfo(weatherObj);
+    const timezone = this.setTimezone(weatherObj);
     const rainData = this.getRainData(weatherObj);
-    const sunData = this.getSunData(weatherObj);
+    const sunData = this.setSunData(weatherObj);
     const windData = this.getWindData(weatherObj);
+  }
+
+  setGeneralInfo(weather: any) {
+    this.generalInfo = {
+      name: weather.name,
+    };
   }
 
   setTemperature(weather: any) {
@@ -46,16 +61,36 @@ export class WeatherService {
     }
   }
 
+  setSunData(weather: any) {
+    this.sunData = { 
+      sunrise: weather.sys.sunrise,
+      sunset: weather.sys.sunset
+    }
+  }
+
+  setTimezone(weather: any) {
+    this.timezone = weather.timezone; 
+    console.log(this.timezone);
+  }
+
+  getGeneralInfo() {
+    return this.generalInfo;
+  }
+
   getTemperature() {
     return this.temperature;
   }
 
-  getRainData(weather: any) {
-    return weather
+  getSunData() {
+    return this.sunData;
   }
 
-  getSunData(weather: any) {
-    return weather.sys;
+  getTimezone() {
+    return this.timezone;
+  }
+
+  getRainData(weather: any) {
+    return weather
   }
 
   getWindData(weather: any) {

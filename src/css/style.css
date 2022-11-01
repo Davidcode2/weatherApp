@@ -3,6 +3,15 @@
 	src: url('./PlayfairDisplay-Medium.ttf');
 }
 
+:root {
+  --main-button-color: grey;
+  --main-button-background-color: rgba(205, 205, 205, 0.1);
+  --main-background-color: rgba(205, 205, 205, 0.1);
+  --secondary-background-color: #ffffe6;
+  --main-shadow: rgba(10,10,10,0.1);
+  --main-text-color: black;
+}
+
 * {
   font-family: 'PlayfairDisplay';
 }
@@ -19,6 +28,17 @@ html {
   justify-content: center;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .hero h1 {
   font-weight: normal;
   margin: 0;
@@ -31,6 +51,39 @@ form {
 }
 
 form input {
-  padding: 10px 100px 10px 4px;
+  padding: 10px 100px 10px 15px;
+  border-radius: 25px;
+  background-color: var(--secondary-background-color);
+  border: none;
+}
+
+form input:focus {
+  border: none;
+  outline: none;
+  background-color: var(--main-text-color);
+  color: white;
+}
+form input:active {
+  border: none;
+}
+
+.wrapper {
+  display: grid;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 10px;
+  border-radius: 10px;
+  color: var(--main-text-color);
+  background-color: var(--main-background-color);
+  padding: 10px;
+  margin: 10px 0 15px 0;
+}
+
+.cardShadow {
+  box-shadow: 0px 20px 20px 0px var(--main-shadow);
+  transition: box-shadow 0.1s;
 }
 
